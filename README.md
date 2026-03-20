@@ -7,8 +7,17 @@ Built with [Next.js](https://nextjs.org/) and [TailwindCSS](https://tailwindcss.
 ## Running locally
 
 ```bash
-yarn
-yarn dev
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+To build for production:
+
+```bash
+npm run build
+npm start
 ```
 
 ## Based on
