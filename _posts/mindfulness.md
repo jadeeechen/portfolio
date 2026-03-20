@@ -5,8 +5,7 @@ tagline: Teaching to Fish
 preview: >-
   A personal reflection on mindfulness, mental well-being, and building inner
   resilience.
-image: >-
-  https://preview.redd.it/teach-to-fish-v0-y0d4zrtml2wf1.png?auto=webp&s=c5d75b7daab995980bc99215cbd18a945396481c
+image: /images/teaching-to-fish.png
 ---
 Mindfulness.
 
@@ -21,3 +20,5 @@ I firmly believe that knowledge empowers. Equipping children with the means to g
 It is worth noting that one doesn’t have to be anxious or burnt out to try mindfulness. It is a practice that can enrich everyday life. Think of mindfulness as a muscle that benefits from regular exercise. It goes beyond merely emptying your mind; it's about understanding that your thoughts do not define you, and there's no need to attach your identity to them.
 
 So no, I cannot hand you peace of mind on a plate...but if robots really do take over, at least you will still know how to fish for it yourself.
+
+(Cover Photo image source: [brianwonderful.com](https://www.brianwonderful.com))
