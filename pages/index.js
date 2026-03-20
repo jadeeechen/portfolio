@@ -22,7 +22,7 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center mt-20 laptop:mt-32 text-center">
           {/* Profile image circle */}
           <img
-            src="/images/profile-photo.jpg"
+            src={data.profilePhoto}
             alt={data.name}
             className="rounded-full mb-6 object-cover"
             style={{ width: "160px", height: "160px" }}
@@ -51,12 +51,13 @@ export default function Home() {
               </Button>
             ))}
           </div>
+
         </div>
 
         {/* This button should not go into production */}
         {process.env.NODE_ENV === "development" && (
           <div className="fixed bottom-5 right-5">
-            <Link href="/edit">
+            <Link href="/edit?tab=HOME">
               <Button type="primary">Edit Data</Button>
             </Link>
           </div>

@@ -69,6 +69,7 @@ const Header = ({ isBlog }) => {
             >
               {!isBlog ? (
                 <div className="grid grid-cols-1">
+                  <Button onClick={() => router.push("/")}>Home</Button>
                   <Button onClick={() => router.push("/projects")}>Projects</Button>
                   <Button onClick={() => router.push("/about")}>About</Button>
                   {showBlog && (
@@ -85,9 +86,9 @@ const Header = ({ isBlog }) => {
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:jadeeechen@gmail.com")}
+                    onClick={() => router.push("/contact")}
                   >
-                    Email
+                    Contact
                   </Button>
                 </div>
               ) : (
@@ -95,6 +96,7 @@ const Header = ({ isBlog }) => {
                   <Button onClick={() => router.push("/")} classes="first:ml-1">
                     Home
                   </Button>
+                  <Button onClick={() => router.push("/projects")}>Projects</Button>
                   <Button onClick={() => router.push("/about")}>About</Button>
                   {showBlog && (
                     <Button onClick={() => router.push("/blog")}>Blog</Button>
@@ -109,9 +111,9 @@ const Header = ({ isBlog }) => {
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:jadeeechen@gmail.com")}
+                    onClick={() => router.push("/contact")}
                   >
-                    Email
+                    Contact
                   </Button>
                 </div>
               )}
@@ -132,6 +134,7 @@ const Header = ({ isBlog }) => {
         </h1>
         {!isBlog ? (
           <div className="flex">
+            <Button onClick={() => router.push("/")}>Home</Button>
             <Button onClick={() => router.push("/projects")}>Projects</Button>
             <Button onClick={() => router.push("/about")}>About</Button>
             {showBlog && (
@@ -146,8 +149,8 @@ const Header = ({ isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:jadeeechen@gmail.com")}>
-              Email
+            <Button onClick={() => router.push("/contact")}>
+              Contact
             </Button>
             {mounted && theme && data.darkMode && (
               <Button
@@ -163,6 +166,7 @@ const Header = ({ isBlog }) => {
         ) : (
           <div className="flex">
             <Button onClick={() => router.push("/")}>Home</Button>
+            <Button onClick={() => router.push("/projects")}>Projects</Button>
             <Button onClick={() => router.push("/about")}>About</Button>
             {showBlog && (
               <Button onClick={() => router.push("/blog")}>Blog</Button>
@@ -176,8 +180,8 @@ const Header = ({ isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:jadeeechen@gmail.com")}>
-              Email
+            <Button onClick={() => router.push("/contact")}>
+              Contact
             </Button>
 
             {mounted && theme && data.darkMode && (

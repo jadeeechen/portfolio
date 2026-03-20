@@ -2,9 +2,12 @@ import Head from "next/head";
 import Header from "../components/Header";
 import WorkCard from "../components/WorkCard";
 import Cursor from "../components/Cursor";
+import Button from "../components/Button";
+import { useRouter } from "next/router";
 import data from "../data/portfolio.json";
 
 export default function Projects() {
+  const router = useRouter();
   return (
     <div className={`relative ${data.showCursor && "cursor-none"}`}>
       {data.showCursor && <Cursor />}
@@ -27,10 +30,16 @@ export default function Projects() {
                 name={project.title}
                 description={project.description}
                 onClick={() => window.open(project.url)}
+                wip={project.wip}
               />
             ))}
           </div>
         </div>
+        {process.env.NODE_ENV === "development" && (
+          <div className="fixed bottom-5 right-5">
+            <Button onClick={() => router.push("/edit?tab=PROJECTS")} type="primary">Edit Data</Button>
+          </div>
+        )}
       </div>
     </div>
   );

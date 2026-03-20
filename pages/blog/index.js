@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Router, { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
 import { stagger } from "../../animations";
 import Button from "../../components/Button";
 import Cursor from "../../components/Cursor";
@@ -13,6 +14,10 @@ const Blog = ({ posts }) => {
   const text = useRef();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const { theme } = useTheme();
+
+  const darkGradient = "linear-gradient(135deg, rgba(248,107,223,0.75) 0%, rgba(107,107,248,0.75) 100%)";
+  const lightGradient = "linear-gradient(135deg, rgba(248,107,223,0.35) 0%, rgba(107,107,248,0.35) 100%)";
 
   useIsomorphicLayoutEffect(() => {
     stagger(
@@ -90,11 +95,20 @@ const Blog = ({ posts }) => {
                     key={post.slug}
                     onClick={() => Router.push(`/blog/${post.slug}`)}
                   >
-                    <img
-                      className="w-full h-60 rounded-lg shadow-lg object-contain"
-                      src={post.image}
-                      alt={post.title}
-                    ></img>
+                    {post.image ? (
+                      <img
+                        className="w-full h-60 rounded-lg shadow-lg object-contain hover:scale-110 transition-all ease-out duration-300"
+                        src={post.image}
+                        alt={post.title}
+                      />
+                    ) : (
+                      <div
+                        className="w-full h-60 rounded-lg shadow-lg flex flex-col items-center justify-center px-6 text-center hover:scale-110 transition-all ease-out duration-300"
+                        style={{ background: mounted && theme === "dark" ? darkGradient : lightGradient }}
+                      >
+                        <h2 className="text-xl font-semibold text-white drop-shadow-md">{post.title}</h2>
+                      </div>
+                    )}
                     <h2 className="mt-5 text-2xl laptop:text-3xl">{post.title}</h2>
                     <p className="mt-2 opacity-50 text-lg">{post.preview}</p>
                     <span className="text-sm mt-5 opacity-25">

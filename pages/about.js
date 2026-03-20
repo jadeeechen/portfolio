@@ -1,9 +1,12 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Cursor from "../components/Cursor";
+import Button from "../components/Button";
+import { useRouter } from "next/router";
 import data from "../data/portfolio.json";
 
 export default function About() {
+  const router = useRouter();
   return (
     <div className={`relative ${data.showCursor && "cursor-none"}`}>
       {data.showCursor && <Cursor />}
@@ -25,13 +28,18 @@ export default function About() {
               ))}
             </div>
             <img
-              src="/images/profile-photo.jpg"
+              src={data.profilePhoto}
               alt={data.name}
               className="rounded-full object-cover shrink-0 self-start laptop:mt-4 laptop:mr-10"
               style={{ width: "200px", height: "200px" }}
             />
           </div>
         </div>
+        {process.env.NODE_ENV === "development" && (
+          <div className="fixed bottom-5 right-5">
+            <Button onClick={() => router.push("/edit?tab=ABOUT")} type="primary">Edit Data</Button>
+          </div>
+        )}
       </div>
     </div>
   );

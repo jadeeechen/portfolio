@@ -7,10 +7,10 @@ tagline: >-
 preview: >-
   Computer vision can help understand why the same climb feels so different
   across different bodies.
-image: /images/indoor-climbing.png
+image: /images/rock-climbing-wall.jpg
 ---
 
-(Image source: [Destination Vancouver](https://www.destinationvancouver.com/inspirations/city/where-to-try-indoor-rock-climbing-in-vancouver))
+(Image source: [Mark Parisi](https://www.offthemark.com/))
 
 ## Inconsistent Grading
 

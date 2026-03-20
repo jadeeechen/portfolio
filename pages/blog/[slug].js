@@ -3,7 +3,7 @@ import { getPostBySlug, getAllPosts } from "../../utils/api";
 import Header from "../../components/Header";
 import ContentSection from "../../components/ContentSection";
 import Head from "next/head";
-import { useIsomorphicLayoutEffect } from "../../utils";
+import { ISOToDate, useIsomorphicLayoutEffect } from "../../utils";
 import { stagger } from "../../animations";
 import Button from "../../components/Button";
 import BlogEditor from "../../components/BlogEditor";
@@ -55,6 +55,7 @@ const BlogPost = ({ post }) => {
           >
             {post.tagline}
           </h2>
+          <span className="text-sm mt-3 opacity-25">{ISOToDate(post.date)}</span>
         </div>
         <ContentSection content={post.content}></ContentSection>
       </div>
