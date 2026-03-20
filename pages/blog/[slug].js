@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { getPostBySlug, getAllPosts } from "../../utils/api";
 import Header from "../../components/Header";
 import ContentSection from "../../components/ContentSection";
-import Footer from "../../components/Footer";
 import Head from "next/head";
 import { useIsomorphicLayoutEffect } from "../../utils";
 import { stagger } from "../../animations";
@@ -38,13 +37,13 @@ const BlogPost = ({ post }) => {
         <Header isBlog={true} />
         <div className="mt-10 flex flex-col">
           <img
-            className="w-full h-96 rounded-lg shadow-lg object-cover"
+            className="w-full h-96 rounded-lg shadow-lg object-contain"
             src={post.image}
             alt={post.title}
           ></img>
           <h1
             ref={textOne}
-            className="mt-10 text-4xl mob:text-2xl laptop:text-6xl text-bold"
+            className="mt-10 text-3xl laptop:text-5xl text-bold"
           >
             {post.title}
           </h1>
@@ -56,7 +55,6 @@ const BlogPost = ({ post }) => {
           </h2>
         </div>
         <ContentSection content={post.content}></ContentSection>
-        <Footer />
       </div>
       {process.env.NODE_ENV === "development" && (
         <div className="fixed bottom-6 right-6">

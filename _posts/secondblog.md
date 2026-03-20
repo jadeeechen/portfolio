@@ -1,93 +1,23 @@
 ---
-date: '2022-07-08T11:50:54.000Z'
-title: Second Blog
-tagline: This is a Tagline If you want to add.
+date: '2025-02-08T12:50:54.000Z'
+title: Mindfulness
+tagline: Teaching to Fish
 preview: >-
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-  when an unknown printer took a galley of type and scrambled it to make a type
-  specimen book.
+  A personal reflection on mindfulness, mental well-being, and building inner
+  resilience.
 image: >-
-  https://images.unsplash.com/photo-1656427868828-79a829b92b2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80
+  https://preview.redd.it/teach-to-fish-v0-y0d4zrtml2wf1.png?auto=webp&s=c5d75b7daab995980bc99215cbd18a945396481c
 ---
+Mindfulness.
 
-# Heading One
+For as long as I can remember, mindfulness has been an profound yet elusive term that has been floating around – from the endless scrolls of social media to late night conversations with friends. It often felt more like a trendy buzzword than something I really put my mind towards—did you catch the joke there?
 
-**Lorem Ipsum** is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+It wasn't until recent years that the true importance of mindfulness began to set in for me. In an era increasingly cluttered with distractions and temptations, gaining insight into our mental landscapes has become crucial. Despite having been fortunate enough to navigate life without significant mental health challenges, the mounting pressures of adulthood have made me respect the importance of nurturing one’s mental well-being. People that I care deeply about have and continue to struggle with mental health challenges, and witnessing these hardships faced by loved ones has motivated me to advocate for mental wellness.
 
-## This is Heading Two
+The notion that one can master their own happiness is an oversimplification, I acknowledge that many aspects of life remain beyond our control. However, I've come to realize that one of the most valuable gifts we can offer for those in need is not the fish itself but the ability to fish. At the end of the day, we come into this world alone, and we leave this world alone. Friends, family, and partnerships can provide support and community, but one must eventually build resilience from within, rather than rely a foundation that dependent on others.
 
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+I firmly believe that knowledge empowers. Equipping children with the means to govern their thoughts and emotions lays a foundation that children can build upon and cultivate throughout their lives. General Anxiety Disorder (GAD), one of most commonly diagnosed mental health disorders, tends to onset in the early twenties to mid-thirties. Although we have made significant advancements in mental health awareness, the availability of effective treatments still lags behind. The need for preemptive measures is clear—it's significantly more challenging to mitigate symptoms after their onset, though not impossible.
 
-### This is Heading Three with `inline code`
+It is worth noting that one doesn’t have to be anxious or burnt out to try mindfulness. It is a practice that can enrich everyday life. Think of mindfulness as a muscle that benefits from regular exercise. It goes beyond merely emptying your mind; it's about understanding that your thoughts do not define you, and there's no need to attach your identity to them.
 
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-
-#### This is Heading Four With Code Block
-
-```
-
-# Auto-generated based on the server's hostname.
-# Set this to the URL used to access the Firezone Web UI.
-default['firezone']['external_url'] = 'https://firezone.example.com'
-
-# Specify the path to your SSL cert and private key.
-# If set to nil (default), a self-signed cert will be generated for you.
-default['firezone']['ssl']['certificate'] = '/path/to/cert.pem'
-default['firezone']['ssl']['certificate_key'] = '/path/to/key.pem'
-
-```
-
-##### Heading Five Code With Max Height
-
-```
-
-# Auto-generated based on the server's hostname.
-# Set this to the URL used to access the Firezone Web UI.
-default['firezone']['external_url'] = 'https://firezone.example.com'
-
-# Specify the path to your SSL cert and private key.
-# If set to nil (default), a self-signed cert will be generated for you.
-default['firezone']['ssl']['certificate'] = '/path/to/cert.pem'
-default['firezone']['ssl']['certificate_key'] = '/path/to/key.pem'
-
-# Auto-generated based on the server's hostname.
-# Set this to the URL used to access the Firezone Web UI.
-default['firezone']['external_url'] = 'https://firezone.example.com'
-
-# Specify the path to your SSL cert and private key.
-# If set to nil (default), a self-signed cert will be generated for you.
-default['firezone']['ssl']['certificate'] = '/path/to/cert.pem'
-default['firezone']['ssl']['certificate_key'] = '/path/to/key.pem'
-
-```
-
-## BLockquote
-
-> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-
-## Ordered List with horizontal line
-
-1. First item
-2. Second item
-3. Third item
-4. Fourth item
-
----
-
-## Unordered List With Horizontal line
-
-- First item
-- Second item
-- Third item
-- Fourth item
-
----
-
-## Links
-
-My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
-
-## Images
-
-![An old rock in the desert](https://images.unsplash.com/photo-1654475677192-2d869348bb4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
+So no, I cannot hand you peace of mind on a plate...but if robots really do take over, at least you will still know how to fish for it yourself.

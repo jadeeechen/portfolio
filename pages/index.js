@@ -21,8 +21,10 @@ export default function Home() {
 
         <div className="flex flex-col items-center justify-center mt-20 laptop:mt-32 text-center">
           {/* Profile image circle */}
-          <div
-            className="rounded-full bg-gray-300 dark:bg-gray-600 mb-6"
+          <img
+            src="/images/profile-photo.jpg"
+            alt={data.name}
+            className="rounded-full mb-6 object-cover"
             style={{ width: "160px", height: "160px" }}
           />
 
@@ -32,9 +34,14 @@ export default function Home() {
           </h1>
 
           {/* Tagline */}
-          <p className="text-lg laptop:text-xl opacity-60 mb-6 w-full laptop:w-2/5">
-            I specialize in statistical analysis, predictive modeling, and data visualization using Python, R, and SQL.
+          <p className="text-lg laptop:text-xl opacity-60 mb-2 w-full laptop:w-2/5">
+            {data.tagline}
           </p>
+
+          {/* Location */}
+          {data.location && (
+            <p className="text-base opacity-40 mt-3 mb-6">{data.location}</p>
+          )}
 
           {/* Social links */}
           <div className="flex flex-wrap justify-center gap-2">

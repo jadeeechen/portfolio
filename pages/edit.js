@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import { v4 as uuidv4 } from "uuid";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/router";
 
 // Data
 import yourData from "../data/portfolio.json";
@@ -13,6 +14,11 @@ const Edit = () => {
   const [data, setData] = useState(yourData);
   const [currentTabs, setCurrentTabs] = useState("HEADER");
   const { theme } = useTheme();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.tab) setCurrentTabs(router.query.tab);
+  }, [router.query.tab]);
 
   const saveData = () => {
     if (process.env.NODE_ENV === "development") {
@@ -118,7 +124,7 @@ const Edit = () => {
 
   // Resume
 
-  const handleAddExperiences = () => {
+  const handleAddExperience = () => {
     setData({
       ...data,
       resume: {
@@ -127,23 +133,55 @@ const Edit = () => {
           ...data.resume.experiences,
           {
             id: uuidv4(),
-            dates: "Enter Dates",
+            company: "New Company",
             type: "Full Time",
-            position: "Frontend Engineer at X",
-            bullets: ["Worked on the frontend of a React application"],
+            roles: [{ title: "New Role", dates: "Enter Dates", bullets: "" }],
           },
         ],
       },
     });
   };
 
-  const handleEditExperiences = (index, editExperience) => {
-    let copyExperiences = data.resume.experiences;
-    copyExperiences[index] = { ...editExperience };
+  const handleDeleteExperience = (id) => {
     setData({
       ...data,
-      resume: { ...data.resume, experiences: copyExperiences },
+      resume: {
+        ...data.resume,
+        experiences: data.resume.experiences.filter((e) => e.id !== id),
+      },
     });
+  };
+
+  const handleEditExperience = (index, updated) => {
+    const copy = [...data.resume.experiences];
+    copy[index] = updated;
+    setData({ ...data, resume: { ...data.resume, experiences: copy } });
+  };
+
+  const handleAddRole = (expIndex) => {
+    const copy = [...data.resume.experiences];
+    copy[expIndex] = {
+      ...copy[expIndex],
+      roles: [...copy[expIndex].roles, { title: "New Role", dates: "Enter Dates", bullets: "" }],
+    };
+    setData({ ...data, resume: { ...data.resume, experiences: copy } });
+  };
+
+  const handleEditRole = (expIndex, roleIndex, updated) => {
+    const copy = [...data.resume.experiences];
+    const roles = [...copy[expIndex].roles];
+    roles[roleIndex] = updated;
+    copy[expIndex] = { ...copy[expIndex], roles };
+    setData({ ...data, resume: { ...data.resume, experiences: copy } });
+  };
+
+  const handleDeleteRole = (expIndex, roleIndex) => {
+    const copy = [...data.resume.experiences];
+    copy[expIndex] = {
+      ...copy[expIndex],
+      roles: copy[expIndex].roles.filter((_, i) => i !== roleIndex),
+    };
+    setData({ ...data, resume: { ...data.resume, experiences: copy } });
   };
 
   return (
@@ -213,52 +251,22 @@ const Edit = () => {
               ></input>
             </div>
             <div className="mt-5 flex items-center">
-              <label className="w-1/5 text-sx opacity-50">
-                Header Tagline One
-              </label>
+              <label className="w-1/5 text-lg opacity-50">Tagline</label>
               <input
-                value={data.headerTaglineOne}
+                value={data.tagline}
                 onChange={(e) =>
-                  setData({ ...data, headerTaglineOne: e.target.value })
+                  setData({ ...data, tagline: e.target.value })
                 }
                 className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
                 type="text"
               ></input>
             </div>
             <div className="mt-5 flex items-center">
-              <label className="w-1/5 text-lg opacity-50">
-                Header Tagline Two
-              </label>
+              <label className="w-1/5 text-lg opacity-50">Location</label>
               <input
-                value={data.headerTaglineTwo}
+                value={data.location}
                 onChange={(e) =>
-                  setData({ ...data, headerTaglineTwo: e.target.value })
-                }
-                className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
-                type="text"
-              ></input>
-            </div>
-            <div className="mt-5 flex items-center">
-              <label className="w-1/5 text-lg opacity-50">
-                Header Tagline Three
-              </label>
-              <input
-                value={data.headerTaglineThree}
-                onChange={(e) =>
-                  setData({ ...data, headerTaglineThree: e.target.value })
-                }
-                className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
-                type="text"
-              ></input>
-            </div>
-            <div className="mt-5 flex items-center">
-              <label className="w-1/5 text-lg opacity-50">
-                Header Tagline Four
-              </label>
-              <input
-                value={data.headerTaglineFour}
-                onChange={(e) =>
-                  setData({ ...data, headerTaglineFour: e.target.value })
+                  setData({ ...data, location: e.target.value })
                 }
                 className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
                 type="text"
@@ -582,148 +590,130 @@ const Edit = () => {
 
             <h1>Experiences</h1>
             <div className="mt-10">
-              {data.resume.experiences.map((experiences, index) => (
-                <div className="mt-5" key={experiences.id}>
+              {data.resume.experiences.map((exp, index) => (
+                <div className="mt-10" key={exp.id}>
                   <div className="flex items-center justify-between">
-                    <h1 className="text-2xl">{experiences.position}</h1>
-                    <Button
-                      // onClick={() => deleteProject(project.id)}
-                      type="primary"
-                    >
+                    <h1 className="text-2xl">{exp.company}</h1>
+                    <Button onClick={() => handleDeleteExperience(exp.id)} type="primary">
                       Delete
                     </Button>
                   </div>
-
                   <div className="flex items-center mt-5">
-                    <label className="w-1/5 text-lg opacity-50">Dates</label>
+                    <label className="w-1/5 text-lg opacity-50">Company</label>
                     <input
-                      value={experiences.dates}
-                      onChange={(e) =>
-                        handleEditExperiences(index, {
-                          ...experiences,
-                          dates: e.target.value,
-                        })
-                      }
+                      value={exp.company}
+                      onChange={(e) => handleEditExperience(index, { ...exp, company: e.target.value })}
                       className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
                       type="text"
-                    ></input>
+                    />
                   </div>
                   <div className="flex items-center mt-2">
                     <label className="w-1/5 text-lg opacity-50">Type</label>
                     <input
-                      value={experiences.type}
-                      onChange={(e) =>
-                        handleEditExperiences(index, {
-                          ...experiences,
-                          type: e.target.value,
-                        })
-                      }
+                      value={exp.type}
+                      onChange={(e) => handleEditExperience(index, { ...exp, type: e.target.value })}
                       className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
                       type="text"
-                    ></input>
+                    />
                   </div>
-                  <div className="flex items-center mt-2">
-                    <label className="w-1/5 text-lg opacity-50">Position</label>
-                    <input
-                      value={experiences.position}
-                      onChange={(e) =>
-                        handleEditExperiences(index, {
-                          ...experiences,
-                          position: e.target.value,
-                        })
-                      }
-                      className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
-                      type="text"
-                    ></input>
+                  <div className="mt-5 ml-0">
+                    <label className="text-lg opacity-50">Roles</label>
+                    {exp.roles.map((role, ri) => (
+                      <div key={ri} className="mt-3 pl-5 border-l-2">
+                        <div className="flex items-center justify-between">
+                          <h2 className="text-lg opacity-75">{role.title}</h2>
+                          <Button onClick={() => handleDeleteRole(index, ri)}>Remove</Button>
+                        </div>
+                        <div className="flex items-center mt-2">
+                          <label className="w-1/5 text-sm opacity-50">Title</label>
+                          <input
+                            value={role.title}
+                            onChange={(e) => handleEditRole(index, ri, { ...role, title: e.target.value })}
+                            className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
+                            type="text"
+                          />
+                        </div>
+                        <div className="flex items-center mt-2">
+                          <label className="w-1/5 text-sm opacity-50">Dates</label>
+                          <input
+                            value={role.dates}
+                            onChange={(e) => handleEditRole(index, ri, { ...role, dates: e.target.value })}
+                            className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
+                            type="text"
+                          />
+                        </div>
+                        <div className="flex items-center mt-2">
+                          <label className="w-1/5 text-sm opacity-50">Bullets</label>
+                          <input
+                            value={role.bullets}
+                            onChange={(e) => handleEditRole(index, ri, { ...role, bullets: e.target.value })}
+                            placeholder="Bullet One, Bullet Two, Bullet Three"
+                            className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <Button onClick={() => handleAddRole(index)} type="primary" classes="mt-3">
+                      Add Role +
+                    </Button>
                   </div>
-                  <div className="mt-2 flex">
-                    <label className="w-1/5 text-lg opacity-50">Bullets</label>
-                    <div className="w-4/5 ml-10 flex flex-col">
-                      <input
-                        value={experiences.bullets}
-                        onChange={(e) =>
-                          handleEditExperiences(index, {
-                            ...experiences,
-                            bullets: e.target.value,
-                          })
-                        }
-                        placeholder="Bullet One, Bullet Two, Bullet Three"
-                        className="p-2 rounded-md shadow-lg border-2"
-                        type="text"
-                      ></input>
-                    </div>
-                  </div>
+                  <hr className="my-5" />
                 </div>
               ))}
             </div>
             <div className="my-10">
-              <Button onClick={handleAddExperiences} type="primary">
-                Add Experience +
+              <Button onClick={handleAddExperience} type="primary">
+                Add Company +
               </Button>
             </div>
             <hr className="my-10"></hr>
             <div className="mt-10">
               <h1>Education</h1>
-              <div className="flex items-center mt-5">
-                <label className="w-1/5 text-lg opacity-50">Name</label>
-                <input
-                  value={data.resume.education.universityName}
-                  onChange={(e) =>
-                    setData({
-                      ...data,
-                      resume: {
-                        ...data.resume,
-                        education: {
-                          ...data.resume.education,
-                          universityName: e.target.value,
-                        },
-                      },
-                    })
-                  }
-                  className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
-                  type="text"
-                ></input>
-              </div>
-              <div className="flex items-center mt-5">
-                <label className="w-1/5 text-lg opacity-50">Dates</label>
-                <input
-                  value={data.resume.education.universityDate}
-                  onChange={(e) =>
-                    setData({
-                      ...data,
-                      resume: {
-                        ...data.resume,
-                        education: {
-                          ...data.resume.education,
-                          universityDate: e.target.value,
-                        },
-                      },
-                    })
-                  }
-                  className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
-                  type="text"
-                ></input>
-              </div>
-              <div className="flex items-center mt-5">
-                <label className="w-1/5 text-lg opacity-50">Detail</label>
-                <input
-                  value={data.resume.education.universityPara}
-                  onChange={(e) =>
-                    setData({
-                      ...data,
-                      resume: {
-                        ...data.resume,
-                        education: {
-                          ...data.resume.education,
-                          universityPara: e.target.value,
-                        },
-                      },
-                    })
-                  }
-                  className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
-                  type="text"
-                ></input>
-              </div>
+              {data.resume.education.map((edu, index) => (
+                <div key={index} className="mt-5">
+                  <h2 className="text-lg opacity-75">Entry {index + 1}</h2>
+                  <div className="flex items-center mt-2">
+                    <label className="w-1/5 text-lg opacity-50">Name</label>
+                    <input
+                      value={edu.universityName}
+                      onChange={(e) => {
+                        const updated = [...data.resume.education];
+                        updated[index] = { ...updated[index], universityName: e.target.value };
+                        setData({ ...data, resume: { ...data.resume, education: updated } });
+                      }}
+                      className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
+                      type="text"
+                    />
+                  </div>
+                  <div className="flex items-center mt-2">
+                    <label className="w-1/5 text-lg opacity-50">Dates</label>
+                    <input
+                      value={edu.universityDate}
+                      onChange={(e) => {
+                        const updated = [...data.resume.education];
+                        updated[index] = { ...updated[index], universityDate: e.target.value };
+                        setData({ ...data, resume: { ...data.resume, education: updated } });
+                      }}
+                      className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
+                      type="text"
+                    />
+                  </div>
+                  <div className="flex items-center mt-2">
+                    <label className="w-1/5 text-lg opacity-50">Detail</label>
+                    <input
+                      value={edu.universityPara}
+                      onChange={(e) => {
+                        const updated = [...data.resume.education];
+                        updated[index] = { ...updated[index], universityPara: e.target.value };
+                        setData({ ...data, resume: { ...data.resume, education: updated } });
+                      }}
+                      className="w-4/5 ml-10 p-2 rounded-md shadow-lg border-2"
+                      type="text"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
             <hr className="my-10"></hr>
             <div className="mt-10">
