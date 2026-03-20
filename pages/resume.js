@@ -37,7 +37,7 @@ const Resume = () => {
           data.showCursor && "cursor-none"
         }`}
       >
-        <Header isBlog />
+        <Header />
         <div className="mt-10 p-2 laptop:p-0">
           <h1 className="text-bold text-6xl laptop:text-8xl w-full">Resume.</h1>
         </div>

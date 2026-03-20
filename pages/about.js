@@ -15,7 +15,7 @@ export default function About() {
       <div className="gradient-circle-bottom"></div>
 
       <div className="container mx-auto mb-10">
-        <Header isBlog={true} />
+        <Header />
         <div className="mt-10 laptop:mt-20 p-2 laptop:p-0">
           <h1 className="text-bold text-6xl laptop:text-8xl w-full">About.</h1>
           <div className="mt-2 flex flex-col laptop:flex-row gap-10 laptop:gap-20 items-start">

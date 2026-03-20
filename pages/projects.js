@@ -16,7 +16,7 @@ export default function Projects() {
       <div className="gradient-circle-bottom"></div>
 
       <div className="container mx-auto mb-10">
-        <Header isBlog={true} />
+        <Header />
         <div className="mt-10 laptop:mt-20 p-2 laptop:p-0">
           <h1 className="text-bold text-6xl laptop:text-8xl w-full">Projects.</h1>
           <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-4">
