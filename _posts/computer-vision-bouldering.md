@@ -5,28 +5,28 @@ tagline: >-
   Using Pose Estimation and Hold Detection to Understand Why Grades Feel
   Different
 preview: >-
-  Computer vision's pose estimation, hold detection, and movement clustering
-  help understand why the same climb feels so different across different bodies.
+  Computer vision can help understand why the same climb feels so different
+  across different bodies.
 image: /images/indoor-climbing.png
 ---
 
+(Image source: [Destination Vancouver](https://www.destinationvancouver.com/inspirations/city/where-to-try-indoor-rock-climbing-in-vancouver))
+
 ## Inconsistent Grading
 
-If you have ever tried the same bouldering problem as a friend and felt completely shut down while they cruised it, you have run into one of the main headaches of indoor climbing. A route gets a single grade, but unlike something like a 100-meter sprint, that grade is not based on one clear, measurable quantity. It is assigned by humans. Climbers show up with different heights, reaches, flexibility, strengths, and movement styles, and what feels like a straightforward sequence for one person can feel like a full puzzle for someone else. That mismatch is frustrating, especially when you are newer, and it raises a bigger question: can we use data to better explain why the same climb feels so different across people?
+If you have ever tried the same bouldering problem as a friend and felt completely shut down while they cruised it, you have run into one of the main headaches of indoor climbing! A route gets assigned a grade, but unlike a 100-meter sprint, that grade is not based on an objecttive and measurable quantity. What feels like a straightforward sequence for one person can feel like a full puzzle for someone else. That mismatch is frustrating, especially when you are new climber.
+
+It raises a bigger question: can we use data to better explain why the same climb feels so different across people?
 
 Computer vision offers a promising way to approach this problem. Rather than relying only on subjective impressions, vision based methods allow us to analyze how climbers actually move on the wall. By turning video into structured data, these methods can reveal patterns in movement, identify common cruxes, and highlight how different bodies solve the same problem in different ways.
 
 ## Why grading boulders is hard
 
-Indoor bouldering problems are typically set and graded by experienced route setters. While setters are highly skilled, grading still relies on human judgment. Setters may test climbs themselves or watch others attempt them, but it is impossible to fully account for the wide range of climber body types and movement strategies.
+Indoor bouldering problems are typically set and graded by experienced route setters. While setters are highly skilled, grading still relies on human judgment. Setters may test climbs themselves or watch others attempt them, but it is impossible to fully account for the wide range of climber body types and movement strategies. 
 
 Several factors contribute to this subjectivity. Height and reach can determine whether a climber can skip a hold entirely or must use a more complex sequence. Flexibility and joint mobility affect how easily someone can keep their center of mass close to the wall. Strength and coordination influence whether a dynamic move feels reasonable or desperate. As a result, climbers often experience different cruxes on the same route, even though the problem has only one official grade.
 
-This subjectivity is not just an inconvenience. It can disproportionately affect beginners, shorter climbers, or those whose body types are less represented among setters. Understanding these differences more systematically is where data science becomes useful.
-
-![](/images/bouldervision.png)
-
-(Image source: [BoulderVision](https://github.com/reiffd7/BoulderVision?ref=blog.roboflow.com))
+Personally, I enjoy crimps and slow, static movements. My 6'2 friend on the otherhand, is far better at pumpy, dynamic movements.
 
 ## What computer vision actually does in this context
 
@@ -35,6 +35,10 @@ At a high level, computer vision is about teaching computers to extract meaningf
 Importantly, this does not require specialized hardware. Recent work shows that a single standard smartphone camera is often sufficient. The key idea is that video contains rich spatial and temporal information that wearable sensors alone cannot capture, such as precise body positioning relative to specific holds.
 
 For climbing, two computer vision tasks are especially important: hold detection and pose estimation. Hold detection identifies and localizes the colored holds on the wall, while pose estimation tracks the climber's joints, such as hips, shoulders, elbows, and knees. When these two streams of information are combined, it becomes possible to analyze not just where a climber moved, but how they moved relative to the route.
+
+![](/images/bouldervision.png)
+
+(Image source: [BoulderVision](https://github.com/reiffd7/BoulderVision?ref=blog.roboflow.com))
 
 ## Why indoor bouldering is a good fit
 
@@ -88,5 +92,3 @@ By analyzing how different climbers move through the same problem, we can better
 - [Using Data to Understand How Difficult Gym Climbs Actually Are (Dogpatch Boulders)](https://www.reddit.com/r/bouldering/comments/117qt1j/using_data_to_understand_how_difficult_gym_climbs/?utm_source=embedv2&utm_medium=post_embed&utm_content=whitespace&embed_host_url=https://embed.notion.co/api/iframe)
 - [Bouldering and Computer Vision](https://blog.tjtl.io/bouldering-and-computer-vision/)
 - [Computer Vision Based Indoor Rock Climbing Analysis](https://kastner.ucsd.edu/ryan/wp-content/uploads/sites/5/2022/06/admin/rock-climbing-coach.pdf?ref=blog.tjtl.io)
-
-(Cover Photo image source: [Destination Vancouver](https://www.destinationvancouver.com/inspirations/city/where-to-try-indoor-rock-climbing-in-vancouver))
