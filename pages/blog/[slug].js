@@ -29,6 +29,8 @@ const BlogPost = ({ post }) => {
       </Head>
       {data.showCursor && <Cursor />}
 
+      <div className="gradient-circle"></div>
+      <div className="gradient-circle-bottom"></div>
       <div
         className={`container mx-auto mt-10 ${
           data.showCursor && "cursor-none"
